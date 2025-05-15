@@ -1,4 +1,4 @@
-#include "labs.h"
+#include "lab.h"
 
 int main() {
 
@@ -60,7 +60,9 @@ int main() {
    switch (choice_dopzadanie) {
    case 0:
     printf("Выполнение лабораторной №%d\n", choice);
-    lab_3();
+    lab_4();
+    break;
+    printf("Выполнение лабораторной №%d, задание №%d\n", choice, choice_dopzadanie);
     break;
    default: printf("Зарегестрироваться на Github\n");
    }
@@ -71,26 +73,25 @@ int main() {
    switch (choice_dopzadanie) {
    case 0:
     printf("Выполнение лабораторной №%d\n", choice);
-    lab_1();
+    lab_5();
     break;
    case 1:
     printf("Выполнение лабораторной №%d, задание №%d\n", choice, choice_dopzadanie);
-    lab_1_1();
+    lab_5_1();
     break;
    }
    break;
   case 6: 
-   lab_6();
    printf("Выберите задание из лабораторной №%d\n(0 - сама лаба, 1 и тд. - доп задания)\n", choice);
    scanf("%d", &choice_dopzadanie);
    switch (choice_dopzadanie) {
    case 0:
     printf("Выполнение лабораторной №%d\n", choice);
-    lab_1();
+    lab_6();
     break;
    case 1:
     printf("Выполнение лабораторной №%d, задание №%d\n", choice, choice_dopzadanie);
-    lab_1_1();
+    lab_6_1();
     break;
    }
    break;
