@@ -24,7 +24,6 @@ int main() {
     printf("Выполнение лабораторной №%d, задание №%d\n", choice, choice_dopzadanie);
     lab_1_1();
     break;
-    //можно добавить дальше...
    }
    break;
 
@@ -40,7 +39,6 @@ int main() {
     printf("Выполнение лабораторной №%d, задание №%d\n", choice, choice_dopzadanie);
     lab_2_1();
     break;
-    //можно добавить дальше...
    }
    break;
 
@@ -52,24 +50,51 @@ int main() {
     printf("Выполнение лабораторной №%d\n", choice);
     lab_3();
     break;
-   default: printf("мы и так выполняем задание к этой работе\n");
+   default: printf("Создать проект\n");
    }
    break;
 
-  case 4: //при добавлении дальнейших лаб использовать шаблон case 1
-   lab_4();
+  case 4: 
+   printf("Выберите задание из лабораторной №%d\n(0 - сама лаба, 1 и тд. - доп задания)\n", choice);
+   scanf("%d", &choice_dopzadanie);
+   switch (choice_dopzadanie) {
+   case 0:
+    printf("Выполнение лабораторной №%d\n", choice);
+    lab_3();
+    break;
+   default: printf("Зарегестрироваться на Github\n");
+   }
    break;
-  case 5: //при добавлении дальнейших лаб использовать шаблон case 1
-   lab_5();
+  case 5: 
+   printf("Выберите задание из лабораторной №%d\n(0 - сама лаба, 1 и тд. - доп задания)\n", choice);
+   scanf("%d", &choice_dopzadanie);
+   switch (choice_dopzadanie) {
+   case 0:
+    printf("Выполнение лабораторной №%d\n", choice);
+    lab_1();
+    break;
+   case 1:
+    printf("Выполнение лабораторной №%d, задание №%d\n", choice, choice_dopzadanie);
+    lab_1_1();
+    break;
+   }
    break;
-  case 6: //при добавлении дальнейших лаб использовать шаблон case 1
+  case 6: 
    lab_6();
+   printf("Выберите задание из лабораторной №%d\n(0 - сама лаба, 1 и тд. - доп задания)\n", choice);
+   scanf("%d", &choice_dopzadanie);
+   switch (choice_dopzadanie) {
+   case 0:
+    printf("Выполнение лабораторной №%d\n", choice);
+    lab_1();
+    break;
+   case 1:
+    printf("Выполнение лабораторной №%d, задание №%d\n", choice, choice_dopzadanie);
+    lab_1_1();
+    break;
+   }
    break;
-  default:
-   printf("таких работ ещё нет, ожидайте обновления\n\n");
   }
  }
-
  return 0;
-
 }
