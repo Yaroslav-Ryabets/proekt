@@ -1,4 +1,4 @@
-#include "labs.h"
+#include "lab.h"
 
 void lab_1() {
 
@@ -145,12 +145,6 @@ void lab_3() {
 
 
 void lab_4() {
-    void process_line(char buffer[]);
-
-    char line[MAXLINE];
-    fgets(line, MAXLINE, stdin); //считывает строку ограниченной длины и сохраняет ее в лайн. считывает строку, которую написали
-    process_line(line); // обработка строки
-    puts(line); // вывод результата
 
 void process_line(char buffer[]) {
     char c; // текущий символ
@@ -207,22 +201,23 @@ void process_line(char buffer[]) {
         i++;
     } while (c != '\0');
 }
+}
 
 void lab_5() {
-    int x[N];  // объявляем массив из 10 элементов
+    int x[N1];  // объявляем массив из 10 элементов
     int i;     // счётчик для циклов
     int is_arithmetic = 1;  // флаг, в котором 1 - прогрессия, 0 - нет. изначально считаем, что прогрессия есть
     int difference;         // переменная для хранения разности арифметической прогрессии
 
-    printf("Введите %d целых чисел: ", N);
-    for(i = 0; i < N; i++) { // цикл от 0 до N-1(последний элемент)
+    printf("Введите %d целых чисел: ", N1);
+    for(i = 0; i < N1; i++) { // цикл от 0 до N-1(последний элемент)
         scanf("%d", &x[i]);  // считываем iый элемент массива
     }
 
     difference = x[1] - x[0]; // вычисляем разность прогрессии (между первыми двумя элементами)
 
     // проверяем, сохраняется ли разность для всех элементов
-    for(i = 2; i < N; i++) {
+    for(i = 2; i < N1; i++) {
         if (x[i] - x[i-1] != difference) {
             is_arithmetic = 0;  // если разность нарушена - сбрасываем флаг
             break;              // преждевременный выход из цикла (досрочный)
@@ -237,12 +232,54 @@ void lab_5() {
     }
 }
 
+     void lab_5_1() {
+    int x[N1]; 
+    int i, is_arithmetic = 1, difference;
+
+    printf("Введите %d целых чисел: ", N1);
+    for(i = 0; i < N1; i++) {
+        scanf("%d", &x[i]);
+    }
+
+    int min_idx, temp;
+    for (i = 0; i < N1-1; i++) {
+        min_idx = i;
+        for (int j = i+1; j < N1; j++) {
+            if (x[j] < x[min_idx]) {
+                min_idx = j;
+            }
+        }
+        temp = x[min_idx];
+        x[min_idx] = x[i];
+        x[i] = temp;
+    }
+
+    difference = x[1] - x[0];
+    for(i = 2; i < N1; i++) {
+        if (x[i] - x[i-1] != difference) {
+            is_arithmetic = 0;
+            break;
+        }
+    }
+
+    printf("Отсортированный массив: ");
+    for(i = 0; i < N1; i++) {
+        printf("%d ", x[i]);
+    }
+    if (is_arithmetic) {
+        printf("\nЭто арифметическая прогрессия с разностью %d.\n", difference);
+    } else {
+        printf("\nЭто НЕ арифметическая прогрессия.\n");
+    }
+}   
+
+
 void lab_6() {
-int x[N][K];  // массив из N на K элементов
+int x[N2][K];  // массив из N на K элементов
     int i, j; //i - строки, j - столбцы
     printf("Введите матрицу 3х4:\n");
     // ввод массива
-    for (i = 0; i < N; i++) { 
+    for (i = 0; i < N2; i++) { 
         for (j = 0; j < K; j++) {
             scanf("%d", &x[i][j]);
         }
@@ -254,7 +291,7 @@ int x[N][K];  // массив из N на K элементов
     int min_row = 0;        // номер строки с минимальным значением
     int max_row = 0;        // номер строки с максимальным значением
 
-    for (i = 0; i < N; i++) { // в этой и след строке перебор строк и столбцов
+    for (i = 0; i < N2; i++) { // в этой и след строке перебор строк и столбцов
         for (j = 0; j < K; j++) {
             if (x[i][j] < min_val) { // проверка на то, что проверяемый элемент менеьше нанешнего минимума. если да, то:
                 min_val = x[i][j];
@@ -277,10 +314,42 @@ int x[N][K];  // массив из N на K элементов
     }
     printf("Полученная матрица:\n");
     // вывод измененного массива 
-    for (i = 0; i < N; i++) {
+    for (i = 0; i < N2; i++) {
         for (j = 0; j < K; j++) {
             printf("%4d ", x[i][j]);
         }
         printf("\n");
     }
 }
+    void lab_6_1() {
+    int rows, cols;  // rows - количество строк, cols - количество столбцов
+
+    printf("Введите количество строк и столбцов: ");
+    scanf("%d %d", &rows, &cols);  
+
+    int matrix[rows][cols];  // объявляем исходную матрицу
+    int transposed[cols][rows];  // объявляем транспонированную матрицу
+
+    printf("Введите элементы матрицы:\n");
+    for (int i = 0; i < rows; i++) {  // цикл по строкам
+        for (int j = 0; j < cols; j++) {  // цикл по столбцам
+            scanf("%d", &matrix[i][j]);  
+        }
+    }
+
+    // транспонируем матрицу 
+    for (int i = 0; i < rows; i++) {
+        for (int j = 0; j < cols; j++) {
+            transposed[j][i] = matrix[i][j];  // записываем в новую матрицу
+        }
+    }
+
+    printf("\nТранспонированная матрица:\n");
+    for (int i = 0; i < cols; i++) {
+        for (int j = 0; j < rows; j++) {
+            printf("%d ", transposed[i][j]); 
+        }
+        printf("\n");  
+    }
+        
+    }
