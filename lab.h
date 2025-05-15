@@ -3,9 +3,10 @@
 #include <math.h>
 #define YES 1
 #define NO 0
+#define MAXLINE 1000
 #define max_iterations 100
-#define N 10
-#define N 3  
+#define N1 10
+#define N2 3  
 #define K 4 
 
 void lab_1();
@@ -17,4 +18,6 @@ void lab_3();
 void lab_4();
 void process_line(char buffer[]);
 void lab_5();
+void lab_5_1();
 void lab_6();
+void lab_6_1();
